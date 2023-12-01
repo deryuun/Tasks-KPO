@@ -3,7 +3,15 @@
  *  (1 балл)
  */
 fun replaceElements(array: List<String>): List<String> {
-    return listOfNotNull()
+    val list = array.toMutableList()
+    for (i in list.indices) {
+        for (j in list.indices) {
+            if (i != j && array[j] == list[i]) {
+                list[j] = "blahblah"
+            }
+        }
+    }
+    return  list
 }
 
 
@@ -13,15 +21,27 @@ fun replaceElements(array: List<String>): List<String> {
  *  (1 балл)
  */
 fun uniqueWords(text: String): Int {
-    return 0
+    val list = text.split(" ")
+    val frequencyMap = list.groupingBy { it }.eachCount()
+    val uniq = mutableListOf<String>()
+
+    for (element in list) {
+        if (frequencyMap[element] == 1) {
+            uniq.add(element)
+        }
+    }
+    return uniq.size
 }
 
 // Используйте эту функцию для запуска кода
 // Раскомментируйте нужные участки в процессе реализации
 fun main() {
-    //val text = ""
-    //println(uniqueWords(text))
+    val text = "Hello world world hello hello banana Banana"
+    println(uniqueWords(text))
 
     // Вызвать для text и вывести результат замены на экран
-    //replaceElements()
+    val list = replaceElements(text.split(" "))
+    for (i in list.indices) {
+        println(list[i])
+    }
 }

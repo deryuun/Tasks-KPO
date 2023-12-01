@@ -1,26 +1,24 @@
-
-/**
-    Задание 1: Сформировать целочисленный массив A из N элементов
-    при помощи ввода значений с клавиатуры (N вводит пользователь).
-    Вывести массив на экран. (1 балл)
- */
 fun makeArray(): Array<Int> {
-    return arrayOf()
+    println("Enter N:")
+    val size = readlnOrNull()?.toIntOrNull() ?: 0
+    val array = Array(size) { 0 }
+
+    for (i in array.indices) {
+        array[i] = readlnOrNull()?.toIntOrNull() ?: 0
+    }
+
+    return array
 }
 
-/**
-    Задание 2: Написать функцию для сортировки массива по убыванию и его вывода на экран.
-    Использовать встроенные функции. (0.5 балла)
- */
 fun sortArrayDesc(arr: Array<Int>) {
-
+    val sortedArray = arr.sortedArrayDescending()
+    println("Reverse sorted array: ${sortedArray.joinToString(", ")}")
 }
 
 // Используйте эту функцию для запуска кода
-// Раскомментируйте нужные участки в процессе реализации
 fun main() {
-//    val arr = makeArray()
-//
-//    sortArrayDesc(arr)
-}
+    val arr = makeArray()
+    println("Entered array: ${arr.joinToString(", ")}")
 
+    sortArrayDesc(arr)
+}
